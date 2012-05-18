@@ -1,9 +1,18 @@
 #!/usr/bin/env ruby
 # Christian Genco (@cgenco)
-
+# puts "starting binary"
+t = Time.new
 require 'time'
 require 'optparse'
+# puts Time.new - t
+# puts "loading t_time_tracker gem"
 require 't_time_tracker'
+# puts Time.new - t
+# puts "loaded t_time_tracker gem"
+
+# puts "loaded gems:"
+# puts Gem.loaded_specs.keys
+
 
 @tracker = TTimeTracker.new
 @options = {:from => nil, :to => nil, :filter => '', :done => false}
@@ -122,7 +131,8 @@ end
 
 def finish_current_task(task = @tracker.current_task)
   task[:finish] = @options[:to] || @options[:from] || Time.now
-  @tracker.save(task)
+  task = @tracker.save(task)
+  p task
   puts "Finished: #{task[:description]} (#{TTimeTracker.format_minutes task[:duration]})"
 end
 

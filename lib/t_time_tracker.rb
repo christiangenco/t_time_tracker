@@ -20,6 +20,7 @@ class TTimeTracker
   # @option params [Symbol] :subdirectory the subdirectory in which the current task will be stored
   # @option params [Symbol] :filename the full path to the log file of the current task
   def initialize(params = {})
+    # puts "INITIALIZINGGGG!!!"
     @now          = params[:now]          || Time.now
     @directory    = params[:directory]    || File.join(Dir.home, '.ttimetracker')
     @subdirectory = params[:subdirectory] || File.join(@directory, now.year.to_s, now.strftime("%m_%b"), '')
@@ -104,8 +105,11 @@ class TTimeTracker
       end
 
       # ...and save it as "last" in case you want to resume it
-      File.rename(File.join(@directory, 'current'), File.join(@directory, 'last'))
+      # bugfix: unless it doesn't exist (like during `t reddit --from "10:10am" --to "noon"`)
+      File.rename(File.join(@directory, 'current'), File.join(@directory, 'last')) if File.exists?(File.join(@directory, 'current'))
     end
+
+    task[:duration] = ((task[:finish] - task[:start]).to_f / 60).ceil
 
     task
   end
