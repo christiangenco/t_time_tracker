@@ -1,4 +1,22 @@
+make quotes optional
+
+add filtering:
+  -e PATTERN, --regexp=PATTERN
+  t --list --from "one week ago" -e "@work"
+
+items that start in one day and end in another are logged with a date string and stored in the file they started in
+
+t --list should show the current task (with an indicator that it's ongoing)
+
+Dropbox/Projects/t_time_tracker[master*]% t HN
+/Users/cgenco/.rvm/gems/ruby-1.9.3-p0/gems/t_time_tracker-0.0.0/lib/t_time_tracker.rb:112:in `save': undefined method `-' for nil:NilClass (NoMethodError)
+
+
+
+
 http://guides.rubygems.org/make-your-own-gem/
 
-gem build t_time_tracker.gemspec
-gem install ./t_time_tracker-0.0.0.gem
+test run with:
+ruby -Ilib ./bin/t_time_tracker 
+
+gem build t_time_tracker.gemspec && gem install ./t_time_tracker-0.0.0.gem

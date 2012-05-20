@@ -109,7 +109,7 @@ class TTimeTracker
       File.rename(File.join(@directory, 'current'), File.join(@directory, 'last')) if File.exists?(File.join(@directory, 'current'))
     end
 
-    task[:duration] = ((task[:finish] - task[:start]).to_f / 60).ceil
+    task[:duration] = ((task[:finish] - task[:start]).to_f / 60).ceil if task[:finish]
 
     task
   end
