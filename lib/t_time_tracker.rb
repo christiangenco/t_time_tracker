@@ -182,11 +182,11 @@ class TTimeTracker
   # 
   # @example
   #   time = Time.new   #=> 2012-05-16 00:32:31 +0800
-  #   format_time(time) #=> "00:32:31"
+  #   format_time(time) #=> "2012-05-16 00:32:31"
   # 
   # @param time [Time] a time
   # @return [String] the formatted time
   def format_time(time)
-    time.strftime("%H:%M:%S")
+    time.strftime("%F %T")
   end
 end
