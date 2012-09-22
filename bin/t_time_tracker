@@ -132,7 +132,7 @@ end
 def finish_current_task(task = @tracker.current_task)
   task[:finish] = @options[:to] || @options[:from] || Time.now
   task = @tracker.save(task)
-  p task
+  # p task
   puts "Finished: #{task[:description]} (#{TTimeTracker.format_minutes task[:duration]})"
 end
 
