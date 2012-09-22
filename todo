@@ -1,20 +1,39 @@
 make quotes optional
 
+$ t
+You're not working on anything.
+You finished "#{last_task}" at 3:23pm (12 minutes ago)
+
 add filtering:
   -e PATTERN, --regexp=PATTERN
   t --list --from "one week ago" -e "@work"
 
-items that start in one day and end in another are logged with a date string and stored in the file they started in
+items that start in one day and end in another are logged with a date string and stored in the file they started in => solution: store full date string in CSV (timezones and everything)
 
 t --list should show the current task (with an indicator that it's ongoing)
 
-Dropbox/Projects/t_time_tracker[master*]% t HN
-/Users/cgenco/.rvm/gems/ruby-1.9.3-p0/gems/t_time_tracker-0.0.0/lib/t_time_tracker.rb:112:in `save': undefined method `-' for nil:NilClass (NoMethodError)
+~/Downloads% t
+You're not working on anything
+~/Downloads% t -s
+/Users/cgenco/.rvm/gems/ruby-1.9.3-p0/gems/t_time_tracker-0.0.0/bin/t_time_tracker:133:in `finish_current_task': undefined method `[]=' for nil:NilClass (NoMethodError)
 
+Dropbox/Projects/t_time_tracker[master*]% t nap -f "10am" -t "11:50"
+Started: nap (at 10:00am)
+(should print out "finished")
 
+$ t working
+Started: working (1:00pm)
+$ t /generating report for John
+Continuing: working (2:00)
+Started: generating report for John (2:00pm)
+$ t /making 
 
+update readme to be more marketable:
+* to-done list
+* a log file for your life
+* "where did my day go?"
 
-http://guides.rubygems.org/make-your-own-gem/
+Mobile app? (json input?)
 
 test run with:
 ruby -Ilib ./bin/t_time_tracker 
