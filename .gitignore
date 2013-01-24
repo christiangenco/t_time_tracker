@@ -7,3 +7,6 @@ ttimetracker_gem_experiment
 
 # ignore compiled gem
 *.gem
+
+# ignore stupid mac files
+.DS_Store
